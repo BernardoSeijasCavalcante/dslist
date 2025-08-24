@@ -1,30 +1,26 @@
-package com.devsuperior.dslist.entities;
+package com.devsuperior.dslist.dto;
 
 import java.util.Objects;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.devsuperior.dslist.entities.GameList;
 
-@Entity
-@Table(name = "tb_game_list")
-public class GameList {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class GameListDTO {
 	private Long id;
 	private String name;
 	
-	public GameList() {
+	public GameListDTO() {
 		
 	}
 
-	public GameList(Long id, String name) {
+	public GameListDTO(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
+	}
+	
+	public GameListDTO(GameList entity) {
+		id = entity.getId();
+		name = entity.getName();
 	}
 
 	public Long getId() {
@@ -56,10 +52,9 @@ public class GameList {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		GameList other = (GameList) obj;
+		GameListDTO other = (GameListDTO) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 	
 	
 }
